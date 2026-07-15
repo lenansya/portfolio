@@ -199,7 +199,23 @@
     .edu-name { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; font-weight: 600; color: var(--blush); margin-bottom: 3px; }
     .edu-major { font-size: 0.83rem; color: var(--text-muted); }
     .edu-gpa { display: inline-block; margin-top: 7px; font-size: 0.71rem; font-weight: 600; color: var(--rose); background: rgba(186,135,144,0.1); padding: 3px 12px; border-radius: 100px; border: 1px solid rgba(186,135,144,0.2); }
-
+    .edu-thesis {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(186,135,144,0.15);
+      font-size: 0.83rem;
+      line-height: 1.5;
+    }
+    .edu-thesis-label {
+      font-weight: 600;
+      color: var(--rose);
+      margin-right: 6px;
+    }
+    .edu-thesis-title {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    
     .section-experience { background: var(--white); }
     .exp-list { display: flex; flex-direction: column; gap: 18px; }
     .exp-card {
@@ -214,9 +230,10 @@
     }
     .exp-card:hover { border-color: var(--border-dark); box-shadow: 0 4px 24px rgba(49,9,15,0.08); }
     .exp-card:hover::before { opacity: 1; }
-    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; flex-wrap: wrap; gap: 10px; }
-    .exp-title { font-family: 'Cormorant Garamond', serif; font-size: 1.18rem; font-weight: 600; color: var(--dark); margin-bottom: 3px; }
-    .exp-company { font-size: 0.83rem; color: var(--marun-mid); font-weight: 500; }
+    .exp-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;}
+    .exp-date-cert {display: flex; align-items: center; gap: 10px; flex-shrink: 0;}
+    .exp-title { font-family: 'Cormorant Garamond', serif; font-size: 1.18rem; font-weight: 700; color: var(--marun); margin-bottom: 3px; }
+    .exp-company { font-size: 0.83rem; color: var(--marun); font-weight: 600; }
     .exp-date { font-size: 0.71rem; color: var(--text-muted); background: var(--blush); padding: 5px 13px; border-radius: 100px; white-space: nowrap; border: 1px solid var(--border); }
     .exp-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.85; }
     .exp-card-inner { display: flex; gap: 20px; align-items: center; }
@@ -244,7 +261,7 @@
       opacity: 0.7; transition: opacity 0.2s;
     }
     .lightbox-close:hover { opacity: 1; }
-
+    
     .section-projects { background: var(--marun); }
     .section-projects section {max-width: 100%;}
     .section-projects .section-label { color: var(--blush-mid); }
@@ -338,6 +355,85 @@
       object-fit: cover;
     }
 
+    .project-mockup.doc { flex-direction: column; padding: 24px 20px; align-items: stretch; }
+
+.doc-frame {
+  width: 100%;
+  background: var(--blush);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+}
+
+.doc-tabs {
+  display: flex;
+  gap: 2px;
+  background: var(--blush-mid);
+  padding: 6px 6px 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.doc-tabs::-webkit-scrollbar { display: none; }
+
+.doc-tab {
+  flex: 0 0 auto;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 9px 13px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 3px 3px 0 0;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+.doc-tab:hover { color: var(--marun-mid); }
+.doc-tab.active {
+  background: var(--blush);
+  color: var(--marun);
+  font-weight: 600;
+}
+
+.doc-viewer {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--blush);
+}
+
+.doc-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 18px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+}
+.doc-image.active { opacity: 1; visibility: visible; }
+
+.project-related {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 7px 12px;
+  border-radius: 100px;
+  background: rgba(186,135,144,0.15);
+  border: 1px solid rgba(186,135,144,0.3);
+  color: var(--rose);
+  text-decoration: none;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+.project-related:hover { background: rgba(186,135,144,0.25); }
+
     .slideshow { position: relative; width: 100%; height: 100%; }
     .slideshow-slide {
       position: absolute; inset: 0;
@@ -367,7 +463,7 @@
     .project-name { font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; font-weight: 600; color: #fff; margin-bottom: 10px; line-height: 1.4; }
     .project-desc { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.8; }
     .project-assoc { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; font-size: 0.7rem; color: var(--rose); font-weight: 500; }
-    .project-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; flex-wrap: wrap; gap: 10px; }
+    .project-footer { display: flex; flex-direction: column; align-items: flex-start; margin-top: auto; gap: 12px; }
     .project-github {
       display: inline-flex; align-items: center; gap: 7px;
       font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em;
@@ -379,10 +475,10 @@
     .project-github:hover { background: rgba(255,255,255,0.18); border-color: var(--rose); transform: translateY(-1px); }
 
     .section-skills { background: var(--blush); }
-    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .skill-group { background: var(--white); border: 1px solid var(--border); border-radius: 2px; padding: 22px 24px; }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .skill-group { background: var(--white); border: 1px solid var(--border); border-radius: 2px; padding: 20px 22px; }
     .skill-group.full {grid-column: 1 / -1;}
-    .skill-group-title { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--marun-mid); margin-bottom: 18px; }
+    .skill-group-title { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--marun-mid); margin-bottom: 15px; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .skill-tag { font-size: 0.76rem; padding: 5px 13px; border-radius: 100px; border: 1px solid var(--border); color: var(--text-mid); background: var(--blush); transition: all 0.2s; }
     .skill-tag:hover { background: var(--blush-mid); border-color: var(--rose); color: var(--marun); }
@@ -400,6 +496,7 @@
     .cert-name { font-family: 'Cormorant Garamond', serif; font-size: 1.18rem; font-weight: 600; color: var(--blush); margin-bottom: 5px; }
     .cert-issuer { font-size: 0.8rem; color: var(--text-muted); }
     .cert-badge { font-size: 0.7rem; font-weight: 600; color: var(--blush); background: rgba(186,135,144,0.2); padding: 8px 20px; border-radius: 100px; white-space: nowrap; letter-spacing: 0.05em; border: 1px solid rgba(186,135,144,0.3); }
+    .cert-badge-alt {color: var(--blush); background: var(--marun); border: 1px solid var(--marun);}
 
     .section-contact { background: var(--blush); }
     .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
@@ -462,7 +559,6 @@
         <span class="name-first">Lenansya</span>
         <span class="name-sub">Ersa Salsabila</span>
       </div>
-      <p class="hero-desc">A fresh graduate in Information Systems with hands-on experience in healthcare IT and organizational leadership, driven by a love for technology and problem-solving.</p>
       <a href="#about" class="hero-cta">Explore My Profile</a>
     </div>
     <div class="hero-photo">
@@ -472,7 +568,7 @@
             <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
           </svg>
         </div>
-        <img src="profile.jpeg" alt="Lenansya Ersa Salsabila" />
+        <img src="profile.JPEG" alt="Lenansya Ersa Salsabila" />
       </div>
     </div>
   </div>
@@ -483,12 +579,12 @@
     <div class="section-title">About Me</div>
     <div class="about-grid">
       <div class="about-text">
-        <p>I am a fresh graduate in Information Systems from Universitas Pembangunan Nasional "Veteran" Yogyakarta with a strong academic record (GPA 3.60) and a genuine passion for technology and digital innovation.</p>
-        <p>My experience spans a healthcare IT internship at RSUD RAA Soewondo Pati, where I contributed to patient data management and mobile application development, as well as organizational leadership as General Treasurer of HIMASISFO.</p>
-        <p>I thrive in collaborative environments and enjoy applying both technical and analytical skills to solve real-world challenges.</p>
+        <p>Recent Information Systems graduate with hands-on experience in Healthcare IT, including patient data management, system analysis, database management, and data processing during an internship, alongside an independently developed mobile telemedicine application. Strengthened technical foundations through programming and software testing certifications via Digital Talent Academy (Komdigi), gaining a solid understanding of how systems and applications are built and tested.</p>
+        <p>Proven ability to gather and translate user requirements into practical technology solutions, with strong analytical and problem-solving skills developed through academic and internship experiences. Also equipped with QA fundamentals and hands-on testing experience, including manual and automated testing across the Software Testing Life Cycle (STLC), ensuring systems meet both functional requirements and quality standards.</p>
+        <p>Experienced in organizational leadership as General Treasurer, which sharpened my skills in management, accountability, and teamwork. Passionate about bridging business needs and technology through system analysis and quality assurance, and eager to contribute as a Systems Analyst or QA professional in delivering effective, reliable IT solutions.</p>
       </div>
       <div class="about-info">
-        <div class="info-item"><span class="info-label">Languages</span><span class="info-value">Indonesian (Native), English (Intermediate)</span></div>
+        <div class="info-item"><span class="info-label">Languages</span><span class="info-value">Indonesian (Native), English (TOEFL: 547)</span></div>
       </div>
     </div>
   </section>
@@ -499,12 +595,16 @@
     <div class="section-title">Education</div>
     <div class="edu-list">
       <div class="edu-card">
-        <span class="edu-year">2022 – 2026</span>
+        <span class="edu-year">Aug 2022 – Jan 2026</span>
         <div>
           <div class="edu-stage">Bachelor's Degree</div>
           <div class="edu-name">Universitas Pembangunan Nasional "Veteran" Yogyakarta</div>
           <div class="edu-major">Information Systems</div>
           <span class="edu-gpa">GPA: 3.60 / 4.00</span>
+          <div class="edu-thesis">
+            <span class="edu-thesis-label">Thesis:</span>
+            <span class="edu-thesis-title">"Design and Development of a Mobile Application for Psychology Services at RSUD RAA Soewondo Pati Using the Agile Method"</span>
+          </div>
         </div>
       </div>
     </div>
@@ -518,13 +618,16 @@
       <div class="exp-card">
         <div class="exp-header">
           <div>
-            <div class="exp-title">Healthcare IT Intern</div>
+            <div class="exp-title">Hospital Management Information System Intern</div>
             <div class="exp-company">RSUD RAA Soewondo Pati</div>
           </div>
-          <span class="exp-date">Jan 2025 – Feb 2025</span>
+          <div class="exp-date-cert">
+            <span class="exp-date">Jan 2025 – Feb 2025</span>
+            <a href="https://drive.google.com/file/d/1K1vRRkgVTkEe0GAiBX8M-PFrdvOjBVAH/view?usp=sharing" target="_blank" class="cert-badge cert-badge-alt">View Certificate ↗</a>
+          </div>
         </div>
         <div class="exp-card-inner">
-          <p class="exp-desc">During the internship at RSUD RAA Soewondo Pati, the primary responsibility was managing patient registration processes for the psychiatric clinic and internal medicine departments, ensuring accurate data entry and efficient patient flow management. In addition, healthcare data was organized and processed for official reporting to the Ministry of Health, maintaining data accuracy and compliance with national healthcare standards. Furthermore, a mobile application prototype was developed for the psychology polyclinic, featuring integrated video call functionality to facilitate remote psychological consultations and enhance accessibility to mental health services.</p>
+          <p class="exp-desc">Assisted in patient registration processes for internal medicine and psychiatric polyclinics, and supported the management of healthcare data for government reporting. Developed the patient-side of a video call application using Flutter to facilitate remote psychological consultations.</p>
           <div class="exp-gallery">
             <div class="exp-gallery-img" onclick="openLightbox('exp1_1.jpg')">
               <img src="dokumentasi/intern1.jpeg" alt="Internship photo 1">
@@ -544,13 +647,16 @@
             <div class="exp-title">General Treasurer</div>
             <div class="exp-company">HIMASISFO – UPN "Veteran" Yogyakarta</div>
           </div>
-          <span class="exp-date">Apr 2024 – Jan 2025</span>
+          <div class="exp-date-cert">
+            <span class="exp-date">Mar 2024 – Feb 2025</span>
+            <a href="https://drive.google.com/file/d/1czyarGEQWCFcIU2RByfOK2rK1UtoCEPQ/view?usp=sharing" target="_blank" class="cert-badge cert-badge-alt">View Certificate ↗</a>
+          </div>
         </div>
         <div class="exp-card-inner">
           <p class="exp-desc">Managed organizational finances including budget planning, allocation, monitoring, and financial reporting, while maintaining bookkeeping and financial controls to ensure transparency, accountability, and sustainability.</p>
           <div class="exp-gallery">
             <div class="exp-gallery-img" onclick="openLightbox('exp2_1.jpg')">
-              <img src="dokumentasi/organization1.JPEG" alt="Organization photo 1">
+              <img src="dokumentasi/organization1.jpeg" alt="Organization photo 1">
             </div>
             <div class="exp-gallery-img" onclick="openLightbox('exp2_2.jpg')">
               <img src="dokumentasi/organization2.jpeg" alt="Organization photo 2">
@@ -569,6 +675,47 @@
     <div class="section-label">What I've Built</div>
     <div class="section-title">Projects</div>
     <div class="projects-grid">
+      <div class="project-card" id="analysis-project">
+  <div class="project-mockup doc">
+    <div class="doc-frame">
+      <div class="doc-tabs" id="doc-tabs-1">
+        <button class="doc-tab active" data-target="doc-1-1">Use Case</button>
+        <button class="doc-tab" data-target="doc-1-2">Class Diagram</button>
+        <button class="doc-tab" data-target="doc-1-3">Activity Diagram</button>
+        <button class="doc-tab" data-target="doc-1-4">Sequence Diagram</button>
+        <button class="doc-tab" data-target="doc-1-5">Wireframe</button>
+      </div>
+      <div class="doc-viewer">
+        <img id="doc-1-1" class="doc-image active" src="project_4/use_case.PNG" alt="Use Case Diagram">
+        <img id="doc-1-2" class="doc-image" src="project_4/class_diagram.PNG" alt="Class Diagram">
+        <img id="doc-1-3" class="doc-image" src="project_4/activity_diagram.PNG" alt="Activity Diagram">
+        <img id="doc-1-4" class="doc-image" src="project_4/sequence_diagram.PNG" alt="Sequence Diagram">
+        <img id="doc-1-5" class="doc-image" src="project_4/wireframe.PNG" alt="Wireframe">
+      </div>
+    </div>
+  </div>
+  <div class="project-body">
+    <div class="project-tags">
+      <span class="project-tag">UML</span>
+      <span class="project-tag">PIECES Framework</span>
+      <span class="project-tag">Agile</span>
+      <span class="project-tag">Wireframing</span>
+    </div>
+    <div class="project-period">Sep 2025 – Dec 2025</div>
+    <div class="project-name">Requirement Analysis & System Design — Psychology Service App with Voice-to-Text Transcription</div>
+    <p class="project-desc">End-to-end system design process for a psychology service system, from stakeholder interviews, PIECES problem analysis, UML diagrams, and low-fidelity wireframes that guided development.</p>
+    <div class="project-footer">
+      <div class="project-assoc">
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        Associated with RSUD RAA Soewondo Pati
+      </div>
+      <a href="https://docs.google.com/document/d/1SAUqAGe28sX0Qe7xyfKUKDLeTypqoVY3qYkqTIiQwiw/edit?usp=sharing" class="project-github">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        View Documentation
+      </a>
+    </div>
+  </div>
+</div>
       <div class="project-card">
         <div class="project-mockup">
           <div class="phone-frame">
@@ -702,7 +849,7 @@
           </div>
           <div class="project-period">Jan 2025 – Feb 2025</div>
           <div class="project-name">Psychology Telemedicine App with Video Call</div>
-          <p class="project-desc">A mobile application for online psychology consultation services featuring real-time video call functionality to enable remote consultations between patients and psychologists, improving accessibility to mental health services.</p>
+          <p class="project-desc">A patient-facing mobile application for online psychology consultation services, featuring real-time video call functionality to enable remote consultations with psychologists, improving accessibility to mental health services.</p>
           <div class="project-footer">
             <div class="project-assoc">
               <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -715,7 +862,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 </div>
@@ -725,52 +871,29 @@
     <div class="section-title">Skills</div>
     <div class="skills-grid">
       <div class="skill-group">
-      <div class="skill-group-title">Office & Design</div>
+      <div class="skill-group-title">Core Skills</div>
         <div class="skill-tags">
-          <span class="skill-tag">Microsoft Word</span>
-          <span class="skill-tag">Microsoft Excel</span>
-          <span class="skill-tag">Microsoft PowerPoint</span>
-          <span class="skill-tag">Microsoft Project</span>
-          <span class="skill-tag">Canva</span>
+          <span class="skill-tag">Software Testing & QA: Manual Testing & STLC</span>
+          <span class="skill-tag">Business & System Analysis: Requirements Analysis, SDLC, Process Modelling</span>
+          <span class="skill-tag">Programming: Dart, Flutter, SQL, JavaScript, React.js</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Programming & Framework</div>
+        <div class="skill-group-title">Tools & Technical</div>
         <div class="skill-tags">
-          <span class="skill-tag">Dart</span>
-          <span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">React.js</span>
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">Flutter</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Backend & Database</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Firebase</span>
-          <span class="skill-tag">Supabase</span>
-          <span class="skill-tag">MySQL</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Version Control & Tools</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Git</span>
-          <span class="skill-tag">GitHub</span>
-          <span class="skill-tag">Visual Studio Code</span>
-          <span class="skill-tag">Android Studio</span>
+          <span class="skill-tag">Database: Firebase, Supabase, MySQL</span>
+          <span class="skill-tag">Version Control: Git, GitHub</span>
+          <span class="skill-tag">Microsoft Office: Word, Excel, PowerPoint, Project</span>
         </div>
       </div>
       <div class="skill-group full">
         <div class="skill-group-title">Soft Skills</div>
         <div class="skill-tags">
           <span class="skill-tag">Leadership</span>
-          <span class="skill-tag">Communication</span>
           <span class="skill-tag">Problem-Solving</span>
           <span class="skill-tag">Teamwork</span>
           <span class="skill-tag">Critical Thinking</span>
           <span class="skill-tag">Time Management</span>
-          <span class="skill-tag">Financial Management</span>
           <span class="skill-tag">Decision-Making</span>
           <span class="skill-tag">Adaptability</span>
         </div>
@@ -781,13 +904,62 @@
 <div class="full-section section-certs" id="certifications">
   <section class="fade-in">
     <div class="section-label">Non-Formal Education</div>
-    <div class="section-title">Certifications</div>
-    <div class="cert-card">
+    <div class="section-title">Training & Certifications</div>
+    <div class="cert-card" style="margin-top:14px">
       <div>
-        <div class="cert-name">Problem Solving (Basic)</div>
-        <div class="cert-issuer">HackerRank · February 13, 2026</div>
+        <div class="cert-name">TOEFL Prediction</div>
+        <div class="cert-issuer">Central Course · June, 2026</div>
       </div>
-      <a href="https://www.hackerrank.com/certificates/iframe/a0b3c3381706" target="_blank" class="cert-badge">View Certificate ↗</a>
+      <a href="https://drive.google.com/file/d/1oH63IXd_8_eVHifX0xa_d97k5T__-9Ob/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
+    </div>
+    <div class="cert-card" style="margin-top:14px">
+      <div>
+        <div class="cert-name">SQL (Intermediate)</div>
+        <div class="cert-issuer">HackerRank · July 13, 2026</div>
+      </div>
+      <a href="https://www.hackerrank.com/certificates/iframe/60d9f7e800a8" target="_blank" class="cert-badge">View Certificate ↗</a>
+    </div>
+    <div class="cert-card" style="margin-top:14px">
+      <div>
+        <div class="cert-name">Front-End & Back-End Development - Nasional</div>
+        <div class="cert-issuer">Digital Talent Academy (Komdigi) · July, 2026</div>
+      </div>
+      <a href="https://drive.google.com/file/d/1kqPDmIkW4Ch-AqBroy9kzH6NcdTI0gBS/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
+    </div>
+    <div class="cert-card" style="margin-top:14px">
+      <div>
+        <div class="cert-name">Programming Fundamental - Nasional</div>
+        <div class="cert-issuer">Digital Talent Academy (Komdigi) · July, 2026</div>
+      </div>
+      <a href="https://drive.google.com/file/d/1ZxHMRV8mSNlPXXTT-BewDQvrszJLqBa8/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
+    </div>
+    <div class="cert-card" style="margin-top:14px">
+      <div>
+        <div class="cert-name">Software and API Testing with Manual and Automated Approaches - Nasional</div>
+        <div class="cert-issuer">Digital Talent Academy (Komdigi) · July, 2026</div>
+      </div>
+      <a href="https://drive.google.com/file/d/1H71Z4BHiCEUrzcXO-Apfm_TPzDSuRbtQ/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
+    </div>
+    <div class="cert-card" style="margin-top:14px">
+      <div>
+        <div class="cert-name">Fundamentals of Quality Assurance and Software Testing Life Cycle (STLC) - Nasional</div>
+        <div class="cert-issuer">Digital Talent Academy (Komdigi) · July, 2026</div>
+      </div>
+      <a href="https://drive.google.com/file/d/131IJeqzLqw_rPJ8YPsuwbVjyoJjprXjt/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
+    </div>
+    <div class="cert-card" style="margin-top:14px">
+      <div>
+        <div class="cert-name">Intermediate Assistant Web Developer - Nasional</div>
+        <div class="cert-issuer">Digital Talent Academy (Komdigi) · July, 2026</div>
+      </div>
+      <a href="https://drive.google.com/file/d/1g65u1IoGv92DD3OPAOooT6tZLwUsqmEb/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
+    </div>
+    <div class="cert-card" style="margin-top:14px">
+      <div>
+        <div class="cert-name">Fundamental of Assistant Web Developer - Nasional</div>
+        <div class="cert-issuer">Digital Talent Academy (Komdigi) · July, 2026</div>
+      </div>
+      <a href="https://drive.google.com/file/d/1hieFJ3gaPXPUL4zBS6wa0qsDG2WlYTs2/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
     </div>
     <div class="cert-card" style="margin-top:14px">
       <div>
@@ -805,10 +977,17 @@
     </div>
     <div class="cert-card" style="margin-top:14px">
       <div>
+        <div class="cert-name">Problem Solving (Basic)</div>
+        <div class="cert-issuer">HackerRank · February 13, 2026</div>
+      </div>
+      <a href="https://www.hackerrank.com/certificates/iframe/a0b3c3381706" target="_blank" class="cert-badge">View Certificate ↗</a>
+    </div>
+    <div class="cert-card" style="margin-top:14px">
+      <div>
         <div class="cert-name">Intro to Digital Marketing</div>
         <div class="cert-issuer">RevoU – Mini Course · March 28, 2025 · 2 Weeks</div>
       </div>
-      <span class="cert-badge">Certificate of Completion</span>
+      <a href="https://drive.google.com/file/d/1Jw1KR1nbD6dN7fa0tKKBK5PJwr0OVTg2/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
     </div>
   </section>
 </div>
@@ -890,12 +1069,11 @@
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-  function initSlideshow(slideshowId, dotsId, interval) {
-    const slideshow = document.getElementById(slideshowId);
-    const dotsContainer = document.getElementById(dotsId);
-    if (!slideshow) return;
+  function initSlideshowEl(slideshow, interval) {
+    const dotsContainer = slideshow.closest('.project-mockup').querySelector('.slideshow-dots');
     const slides = slideshow.querySelectorAll('.slideshow-slide');
-    if (slides.length <= 1) return;
+    if (slides.length <= 1 || !dotsContainer) return;
+    dotsContainer.innerHTML = ''; 
     let current = 0;
     slides.forEach((_, i) => {
       const dot = document.createElement('button');
@@ -913,17 +1091,51 @@
     setInterval(() => goTo(current + 1), interval);
   }
 
-  const grid = document.querySelector('.projects-grid');
-  let scrollDir = 1;
-  setInterval(() => {
-    if (grid.scrollLeft + grid.clientWidth >= grid.scrollWidth) scrollDir = -1;
-    if (grid.scrollLeft <= 0) scrollDir = 1;
-    grid.scrollLeft += scrollDir * 1;
-  }, 20);
+  function bindDocTabs(tabGroup) {
+    tabGroup.addEventListener('click', (e) => {
+      const btn = e.target.closest('.doc-tab');
+      if (!btn) return;
+      const viewer = tabGroup.nextElementSibling;
+      const idx = Array.from(tabGroup.children).indexOf(btn);
+      tabGroup.querySelectorAll('.doc-tab').forEach(t => t.classList.remove('active'));
+      viewer.querySelectorAll('.doc-image').forEach(img => img.classList.remove('active'));
+      btn.classList.add('active');
+      viewer.children[idx].classList.add('active');
+    });
+  }
 
-  initSlideshow('slideshow-1', 'dots-1', 3000);
-  initSlideshow('slideshow-2', 'dots-2', 3500);
-  initSlideshow('slideshow-3', 'dots-3', 4000);
+  const grid = document.querySelector('.projects-grid');
+  const originalCards = Array.from(grid.children);
+  const setWidth = grid.scrollWidth; 
+
+  originalCards.forEach(card => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.removeAttribute('id'); 
+    grid.appendChild(clone);
+  });
+
+  grid.querySelectorAll('.slideshow').forEach(sw => {
+    let interval = 2000;
+    if (sw.id.includes('2')) interval = 2000;
+    if (sw.id.includes('3')) interval = 2000;
+    initSlideshowEl(sw, interval);
+  });
+  grid.querySelectorAll('.doc-tabs').forEach(bindDocTabs);
+
+  let isPaused = false;
+  grid.addEventListener('mouseenter', () => { isPaused = true; });
+  grid.addEventListener('mouseleave', () => { isPaused = false; });
+  grid.addEventListener('touchstart', () => { isPaused = true; });
+  grid.addEventListener('touchend', () => { setTimeout(() => { isPaused = false; }, 1500); });
+
+  setInterval(() => {
+    if (isPaused) return;
+    grid.scrollLeft += 1;
+    if (grid.scrollLeft >= setWidth) {
+      grid.scrollLeft -= setWidth; 
+    }
+  }, 5);
 </script>
 </body>
 </html>
