@@ -156,7 +156,7 @@
     .photo-placeholder p { font-size: 0.75rem; margin-top: 10px; color: var(--text-muted); }
 
     .full-section { width: 100%; }
-    section { padding: 96px 80px; max-width: 1100px; margin: 0 auto; }
+    section { padding: 85px 65px; max-width: 1200px; margin: 0 auto; }
 
     .section-label {
       font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
@@ -225,7 +225,7 @@
     }
     .exp-card::before {
       content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-      width: 3px; background: linear-gradient(to bottom, var(--rose), var(--marun));
+      width: 5px; background: linear-gradient(to bottom, var(--rose), var(--marun));
       opacity: 0; transition: opacity 0.2s;
     }
     .exp-card:hover { border-color: var(--border-dark); box-shadow: 0 4px 24px rgba(49,9,15,0.08); }
@@ -261,6 +261,26 @@
       opacity: 0.7; transition: opacity 0.2s;
     }
     .lightbox-close:hover { opacity: 1; }
+
+    .cert-badge {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--blush);
+  background: rgba(186,135,144,0.2);
+  padding: 8px 20px;
+  border-radius: 100px;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(186,135,144,0.3);
+}
+.cert-badge-alt {
+  color: var(--blush);
+  background: var(--marun);
+  border: 1px solid var(--marun);
+}
+.cert-badge:hover { opacity: 0.85; }
     
     .section-projects { background: var(--marun); }
     .section-projects section {max-width: 100%;}
@@ -483,20 +503,61 @@
     .skill-tag { font-size: 0.76rem; padding: 5px 13px; border-radius: 100px; border: 1px solid var(--border); color: var(--text-mid); background: var(--blush); transition: all 0.2s; }
     .skill-tag:hover { background: var(--blush-mid); border-color: var(--rose); color: var(--marun); }
 
-    .section-certs { background: var(--dark); }
-    .section-certs .section-label { color: var(--rose); }
-    .section-certs .section-title { color: var(--blush); }
-    .cert-card {
-      border: 1px solid rgba(186,135,144,0.15); border-radius: 2px; padding: 24px 28px;
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 20px; flex-wrap: wrap; background: rgba(255,255,255,0.04);
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .cert-card:hover { border-color: var(--rose); background: rgba(255,255,255,0.06); }
-    .cert-name { font-family: 'Cormorant Garamond', serif; font-size: 1.18rem; font-weight: 600; color: var(--blush); margin-bottom: 5px; }
-    .cert-issuer { font-size: 0.8rem; color: var(--text-muted); }
-    .cert-badge { font-size: 0.7rem; font-weight: 600; color: var(--blush); background: rgba(186,135,144,0.2); padding: 8px 20px; border-radius: 100px; white-space: nowrap; letter-spacing: 0.05em; border: 1px solid rgba(186,135,144,0.3); }
-    .cert-badge-alt {color: var(--blush); background: var(--marun); border: 1px solid var(--marun);}
+    .certs-wrap { background: #31090F; }
+.certs-wrap .section-label { color: #BA8790; }
+.certs-wrap .section-title { color: #f7f0f1; }
+
+.certs-list { display: flex; flex-direction: column; gap: 14px; }
+
+.certs-item {
+  border: 1px solid rgba(186,135,144,0.2);
+  border-radius: 2px;
+  background: rgba(255,255,255,0.05);
+  transition: border-color 0.2s, background 0.2s;
+}
+.certs-item:hover,
+.certs-item[open] { border-color: #BA8790; background: rgba(255,255,255,0.08); }
+
+.certs-summary {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 20px; padding: 24px 28px; cursor: pointer; list-style: none;
+}
+.certs-summary::-webkit-details-marker { display: none; }
+
+.certs-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 600;
+  color: #f7f0f1; margin-bottom: 4px;
+}
+.certs-sub { font-size: 0.8rem; color: #b07880; }
+
+.certs-chevron {
+  width: 10px; height: 10px; flex-shrink: 0; margin-right: 6px;
+  border-right: 2px solid #BA8790; border-bottom: 2px solid #BA8790;
+  transform: rotate(45deg); transition: transform 0.25s;
+}
+.certs-item[open] .certs-chevron { transform: rotate(-135deg); }
+
+.certs-body { padding: 0 28px 8px; border-top: 1px solid rgba(186,135,144,0.2); }
+.certs-row {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 20px; flex-wrap: wrap; padding: 18px 0;
+  border-bottom: 1px solid rgba(186,135,144,0.1);
+}
+.certs-row:last-child { border-bottom: none; }
+.certs-row-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 600; color: #f7f0f1; margin-bottom: 4px;
+}
+
+.certs-link {
+  text-decoration: none; font-size: 0.72rem; font-weight: 600;
+  color: #f7f0f1; background: #520D19;
+  border: 1px solid rgba(186,135,144,0.4); border-radius: 100px;
+  padding: 9px 20px; white-space: nowrap; letter-spacing: 0.05em;
+  transition: background 0.2s;
+}
+.certs-link:hover { background: #83404C; }
 
     .section-contact { background: var(--blush); }
     .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
@@ -579,10 +640,14 @@
     <div class="section-title">About Me</div>
     <div class="about-grid">
       <div class="about-text">
-        <p>Information Systems graduate with hands-on experience in system analysis, software testing, and application development. Gained practical exposure to healthcare IT during an internship covering patient data management, and strengthened QA foundations through certifications in manual & automated testing (STLC) and structured programming via Digital Talent Academy (Komdigi). Independently built real-world projects, including a telemedicine app, an AI-powered voice-to-text tool for psychology documentation, and a frontend quiz app with API integration, each sharpening the ability to translate user needs into functional, reliable solutions. Former General Treasurer of HIMASISFO, bringing added leadership and accountability, and passionate about bridging business needs and technology through system analysis and quality assurance.</p>
-      </div>
-      <div class="about-info">
-        <div class="info-item"><span class="info-label">Languages</span><span class="info-value">Indonesian (Native), English (TOEFL: 547)</span></div>
+        <p>Information Systems graduate from Universitas Pembangunan Nasional "Veteran" Yogyakarta with hands-on 
+experience in system analysis and design, spanning requirements elicitation, PIECES analysis, UML modelling, 
+database design, and wireframing. Proven ability to translate stakeholder needs into functional specifications and 
+working solutions through a hospital information system internship and an end-to-end undergraduate thesis. 
+Experienced in working directly with healthcare professionals to identify operational problems, define requirements, 
+and validate solutions through black-box testing. Built a voice-to-text mobile psychology service app as the thesis 
+project, which achieved a 532% efficiency improvement over the manual process in a time-based efficiency test with 
+3 users. Backed by certifications in Software Testing Life Cycle, SQL, and Systems Analysis (IBM, Coursera).</p>
       </div>
     </div>
   </section>
@@ -621,11 +686,14 @@
           </div>
           <div class="exp-date-cert">
             <span class="exp-date">Jan 2025 – Feb 2025</span>
-            <a href="https://drive.google.com/file/d/1K1vRRkgVTkEe0GAiBX8M-PFrdvOjBVAH/view?usp=sharing" target="_blank" class="cert-badge cert-badge-alt">View Certificate ↗</a>
+            <a href="https://drive.google.com/file/d/1K1vRRkgVTkEe0GAiBX8M-PFrdvOjBVAH/view?usp=sharing" target="_blank" class="cert-badge cert-badge-alt">View Certificate</a>
           </div>
         </div>
         <div class="exp-card-inner">
-          <p class="exp-desc">Assisted in patient registration processes for internal medicine and psychiatric polyclinics, and supported the management of healthcare data for government reporting. Developed the patient-side of a video call application using Flutter to facilitate remote psychological consultations.</p>
+          <p class="exp-desc">- Conducted stakeholder interviews and applied the PIECES framework to analyze requirements, translating 
+them into UML diagrams and wireframes for system design and development. <br>- Developed the patient-side video call app using Flutter, Agora SDK, and Firebase for remote psychological 
+consultations, and conducted black-box testing to verify functionality and identify defects. <br>- Assisted with patient registration for internal medicine and psychiatric polyclinics, and supported healthcare 
+reporting to government agencies.</p>
           <div class="exp-gallery">
             <div class="exp-gallery-img" onclick="openLightbox('exp1_1.jpg')">
               <img src="dokumentasi/intern1.jpeg" alt="Internship photo 1">
@@ -647,11 +715,13 @@
           </div>
           <div class="exp-date-cert">
             <span class="exp-date">Mar 2024 – Feb 2025</span>
-            <a href="https://drive.google.com/file/d/1czyarGEQWCFcIU2RByfOK2rK1UtoCEPQ/view?usp=sharing" target="_blank" class="cert-badge cert-badge-alt">View Certificate ↗</a>
+            <a href="https://drive.google.com/file/d/1czyarGEQWCFcIU2RByfOK2rK1UtoCEPQ/view?usp=sharing" target="_blank" class="cert-badge cert-badge-alt">View Certificate</a>
           </div>
         </div>
         <div class="exp-card-inner">
-          <p class="exp-desc">Managed organizational finances including budget planning, allocation, monitoring, and financial reporting, while maintaining bookkeeping and financial controls to ensure transparency, accountability, and sustainability.</p>
+          <p class="exp-desc">Managed all financial operations of the Information Systems Student Association, including budget planning, 
+allocation, monitoring, bookkeeping, and financial reporting, while ensuring transparency, accountability, and 
+accuracy throughout the organizational period.</p>
           <div class="exp-gallery">
             <div class="exp-gallery-img" onclick="openLightbox('exp2_1.jpg')">
               <img src="dokumentasi/organization1.jpeg" alt="Organization photo 1">
@@ -673,7 +743,7 @@
           </div>
           <div class="exp-date-cert">
             <span class="exp-date">May 2023 – Oct 2023</span>
-            <a href="https://drive.google.com/file/d/1kxRwIiYiet0C9eZqas69fpolih1Yqnnk/view?usp=sharing" target="_blank" class="cert-badge cert-badge-alt">View Certificate ↗</a>
+            <a href="https://drive.google.com/file/d/1kxRwIiYiet0C9eZqas69fpolih1Yqnnk/view?usp=sharing" target="_blank" class="cert-badge cert-badge-alt">View Certificate</a>
           </div>
         </div>
         <div class="exp-card-inner">
@@ -726,8 +796,8 @@
       <span class="project-tag">Wireframing</span>
     </div>
     <div class="project-period">Sep 2025 – Dec 2025</div>
-    <div class="project-name">Requirement Analysis & System Design — Psychology Service App with Voice-to-Text Transcription</div>
-    <p class="project-desc">End-to-end system design process for a psychology service system, from stakeholder interviews, PIECES problem analysis, UML diagrams, and low-fidelity wireframes that guided development.</p>
+    <div class="project-name">Psychology Service App with Voice-to-Text Transcription</div>
+    <p class="project-desc">(Requirement Analysis & System Design Phase) <br> End-to-end system design process for a psychology service system, from stakeholder interviews, PIECES problem analysis, UML diagrams, and low-fidelity wireframes that guided development.</p>
     <div class="project-footer">
       <div class="project-assoc">
         <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -780,7 +850,7 @@
           </div>
           <div class="project-period">Sep 2025 – Dec 2025</div>
           <div class="project-name">Psychology Service App with Voice-to-Text Transcription</div>
-          <p class="project-desc">A mobile application for psychology services featuring an AI-powered voice-to-text transcription system that enables psychologists to automatically transcribe consultation sessions in real-time. Developed as an undergraduate thesis project.</p>
+          <p class="project-desc">(Development Phase) <br> A mobile application for psychology services featuring an AI-powered voice-to-text transcription system that enables psychologists to automatically transcribe consultation sessions in real-time. Developed as an undergraduate thesis project.</p>
           <div class="project-footer">
             <div class="project-assoc">
               <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -827,7 +897,7 @@
     <div class="project-footer">
       <div class="project-assoc">
         <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-        Recruitment Project Assignment
+        Project Assignment
       </div>
       <a href="https://github.com/lenansya/quiz-app" target="_blank" class="project-github">
         <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
@@ -925,93 +995,143 @@
     </div>
   </section>
 </div>
-<div class="full-section section-certs" id="certifications">
-  <section class="fade-in">
+<div class="certs-wrap">
+  <section>
     <div class="section-label">Non-Formal Education</div>
-    <div class="section-title">Training & Certifications</div>
-    <div class="cert-card" style="margin-top:14px">
-      <div>
-        <div class="cert-name">TOEFL Prediction</div>
-        <div class="cert-issuer">Central Course · June, 2026</div>
-      </div>
-      <a href="https://drive.google.com/file/d/1oH63IXd_8_eVHifX0xa_d97k5T__-9Ob/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
-    </div>
-    <div class="cert-card" style="margin-top:14px">
-      <div>
-        <div class="cert-name">SQL (Intermediate)</div>
-        <div class="cert-issuer">HackerRank · July, 2026</div>
-      </div>
-      <a href="https://www.hackerrank.com/certificates/iframe/60d9f7e800a8" target="_blank" class="cert-badge">View Certificate ↗</a>
-    </div>
-    <div class="cert-card" style="margin-top:14px">
-      <div>
-        <div class="cert-name">Front-End & Back-End Development - Nasional</div>
-        <div class="cert-issuer">Digital Talent Academy (Komdigi) · July, 2026</div>
-      </div>
-      <a href="https://drive.google.com/file/d/1kqPDmIkW4Ch-AqBroy9kzH6NcdTI0gBS/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
-    </div>
-    <div class="cert-card" style="margin-top:14px">
-      <div>
-        <div class="cert-name">Programming Fundamental - Nasional</div>
-        <div class="cert-issuer">Digital Talent Academy (Komdigi) · July, 2026</div>
-      </div>
-      <a href="https://drive.google.com/file/d/1ZxHMRV8mSNlPXXTT-BewDQvrszJLqBa8/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
-    </div>
-    <div class="cert-card" style="margin-top:14px">
-      <div>
-        <div class="cert-name">Software and API Testing with Manual and Automated Approaches - Nasional</div>
-        <div class="cert-issuer">Digital Talent Academy (Komdigi) · July, 2026</div>
-      </div>
-      <a href="https://drive.google.com/file/d/1H71Z4BHiCEUrzcXO-Apfm_TPzDSuRbtQ/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
-    </div>
-    <div class="cert-card" style="margin-top:14px">
-      <div>
-        <div class="cert-name">Fundamentals of Quality Assurance and Software Testing Life Cycle (STLC) - Nasional</div>
-        <div class="cert-issuer">Digital Talent Academy (Komdigi) · July, 2026</div>
-      </div>
-      <a href="https://drive.google.com/file/d/131IJeqzLqw_rPJ8YPsuwbVjyoJjprXjt/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
-    </div>
-    <div class="cert-card" style="margin-top:14px">
-      <div>
-        <div class="cert-name">Intermediate Assistant Web Developer - Nasional</div>
-        <div class="cert-issuer">Digital Talent Academy (Komdigi) · July, 2026</div>
-      </div>
-      <a href="https://drive.google.com/file/d/1g65u1IoGv92DD3OPAOooT6tZLwUsqmEb/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
-    </div>
-    <div class="cert-card" style="margin-top:14px">
-      <div>
-        <div class="cert-name">Fundamental of Assistant Web Developer - Nasional</div>
-        <div class="cert-issuer">Digital Talent Academy (Komdigi) · July, 2026</div>
-      </div>
-      <a href="https://drive.google.com/file/d/1hieFJ3gaPXPUL4zBS6wa0qsDG2WlYTs2/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
-    </div>
-    <div class="cert-card" style="margin-top:14px">
-      <div>
-        <div class="cert-name">SQL (Basic)</div>
-        <div class="cert-issuer">HackerRank · February, 2026</div>
-      </div>
-      <a href="https://www.hackerrank.com/certificates/iframe/30444d43956f" target="_blank" class="cert-badge">View Certificate ↗</a>
-    </div>
-    <div class="cert-card" style="margin-top:14px">
-      <div>
-        <div class="cert-name">JavaScript (Basic)</div>
-        <div class="cert-issuer">HackerRank · February, 2026</div>
-      </div>
-      <a href="https://www.hackerrank.com/certificates/iframe/699694aad127" target="_blank" class="cert-badge">View Certificate ↗</a>
-    </div>
-    <div class="cert-card" style="margin-top:14px">
-      <div>
-        <div class="cert-name">Problem Solving (Basic)</div>
-        <div class="cert-issuer">HackerRank · February, 2026</div>
-      </div>
-      <a href="https://www.hackerrank.com/certificates/iframe/a0b3c3381706" target="_blank" class="cert-badge">View Certificate ↗</a>
-    </div>
-    <div class="cert-card" style="margin-top:14px">
-      <div>
-        <div class="cert-name">Intro to Digital Marketing</div>
-        <div class="cert-issuer">RevoU · March, 2025</div>
-      </div>
-      <a href="https://drive.google.com/file/d/1Jw1KR1nbD6dN7fa0tKKBK5PJwr0OVTg2/view?usp=sharing" target="_blank" class="cert-badge">View Certificate ↗</a>
+    <h2 class="section-title">Training &amp; Certifications</h2>
+    <div class="certs-list">
+      <details class="certs-item">
+        <summary class="certs-summary">
+          <div>
+            <div class="certs-title">Central Course</div>
+            <div class="certs-sub">1 Certificate</div>
+          </div>
+          <span class="certs-chevron"></span>
+        </summary>
+        <div class="certs-body">
+          <div class="certs-row">
+            <div>
+              <div class="certs-row-title">TOEFL Prediction</div>
+              <div class="certs-sub">June, 2026</div>
+            </div>
+            <a href="https://drive.google.com/file/d/1oH63IXd_8_eVHifX0xa_d97k5T__-9Ob/view?usp=sharing" target="_blank" class="certs-link">View Certificate</a>
+          </div>
+        </div>
+      </details>
+      <details class="certs-item">
+        <summary class="certs-summary">
+          <div>
+            <div class="certs-title">Coursera</div>
+            <div class="certs-sub">2 Certificates</div>
+          </div>
+          <span class="certs-chevron"></span>
+        </summary>
+        <div class="certs-body">
+          <div class="certs-row">
+            <div>
+              <div class="certs-row-title">IT Systems Design and Analysis</div>
+              <div class="certs-sub">SkillUp · Oct, 2026</div>
+            </div>
+            <a href="https://coursera.org/share/256d8fe9712c7935c575a9f6e8ba6b08" target="_blank" class="certs-link">View Certificate</a>
+          </div>
+          <div class="certs-row">
+            <div>
+              <div class="certs-row-title">Introduction to Systems Analysis</div>
+              <div class="certs-sub">IBM · Oct, 2026</div>
+            </div>
+            <a href="https://coursera.org/share/2475ef37cc9e28409074793873808e62" target="_blank" class="certs-link">View Certificate</a>
+          </div>
+        </div>
+      </details>
+      <details class="certs-item">
+        <summary class="certs-summary">
+          <div>
+            <div class="certs-title">HackerRank</div>
+            <div class="certs-sub">3 Certificates</div>
+          </div>
+          <span class="certs-chevron"></span>
+        </summary>
+        <div class="certs-body">
+          <div class="certs-row">
+            <div>
+              <div class="certs-row-title">SQL (Intermediate)</div>
+              <div class="certs-sub">July, 2026</div>
+            </div>
+            <a href="https://www.hackerrank.com/certificates/iframe/60d9f7e800a8" target="_blank" class="certs-link">View Certificate</a>
+          </div>
+          <div class="certs-row">
+            <div>
+              <div class="certs-row-title">JavaScript (Basic)</div>
+              <div class="certs-sub">February, 2026</div>
+            </div>
+            <a href="https://www.hackerrank.com/certificates/iframe/699694aad127" target="_blank" class="certs-link">View Certificate</a>
+          </div>
+          <div class="certs-row">
+            <div>
+              <div class="certs-row-title">Problem Solving (Basic)</div>
+              <div class="certs-sub">February, 2026</div>
+            </div>
+            <a href="https://www.hackerrank.com/certificates/iframe/a0b3c3381706" target="_blank" class="certs-link">View Certificate</a>
+          </div>
+        </div>
+      </details>
+      <details class="certs-item">
+        <summary class="certs-summary">
+          <div>
+            <div class="certs-title">Digital Talent Academy Komdigi</div>
+            <div class="certs-sub">4 Certificates</div>
+          </div>
+          <span class="certs-chevron"></span>
+        </summary>
+        <div class="certs-body">
+          <div class="certs-row">
+            <div>
+              <div class="certs-row-title">Software & API Testing (Manual & Automated)</div>
+              <div class="certs-sub">July, 2026</div>
+            </div>
+            <a href="https://drive.google.com/file/d/1H71Z4BHiCEUrzcXO-Apfm_TPzDSuRbtQ/view?usp=sharing" target="_blank" class="certs-link">View Certificate</a>
+          </div>
+          <div class="certs-row">
+            <div>
+              <div class="certs-row-title">QA Fundamentals & Software Testing Life Cycle (STLC)</div>
+              <div class="certs-sub">July, 2026</div>
+            </div>
+            <a href="https://drive.google.com/file/d/131IJeqzLqw_rPJ8YPsuwbVjyoJjprXjt/view?usp=sharing" target="_blank" class="certs-link">View Certificate</a>
+          </div>
+          <div class="certs-row">
+            <div>
+              <div class="certs-row-title">Intermediate Assistant Web Developer</div>
+              <div class="certs-sub">July, 2026</div>
+            </div>
+            <a href="https://drive.google.com/file/d/1g65u1IoGv92DD3OPAOooT6tZLwUsqmEb/view?usp=sharing" target="_blank" class="certs-link">View Certificate</a>
+          </div>
+                    <div class="certs-row">
+            <div>
+              <div class="certs-row-title">Programming Fundamental</div>
+              <div class="certs-sub">July, 2026</div>
+            </div>
+            <a href="https://drive.google.com/file/d/1ZxHMRV8mSNlPXXTT-BewDQvrszJLqBa8/view?usp=sharing" target="_blank" class="certs-link">View Certificate</a>
+          </div>
+        </div>
+      </details>
+      <details class="certs-item">
+        <summary class="certs-summary">
+          <div>
+            <div class="certs-title">RevoU</div>
+            <div class="certs-sub">1 Certificate</div>
+          </div>
+          <span class="certs-chevron"></span>
+        </summary>
+        <div class="certs-body">
+          <div class="certs-row">
+            <div>
+              <div class="certs-row-title">Intro to Digital Marketing</div>
+              <div class="certs-sub">March, 2025</div>
+            </div>
+            <a href="https://drive.google.com/file/d/1Jw1KR1nbD6dN7fa0tKKBK5PJwr0OVTg2/view?usp=sharing" target="_blank" class="certs-link">View Certificate</a>
+          </div>
+        </div>
+      </details>
     </div>
   </section>
 </div>
